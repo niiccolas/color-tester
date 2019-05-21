@@ -9,7 +9,6 @@
 var Rouge = 0x00;
 var Vert = 0x00;
 var Bleu = 0x00;
-var Alpha = 1;
 var opacityRange = document.getElementById("Alpha");
 var colorDisplayer = document.getElementById("color-displayer");
 
@@ -32,11 +31,7 @@ var colorDisplayer = document.getElementById("color-displayer");
 	}
 })()
 
-function changeOpacity() {
-	colorDisplayer.style.opacity = opacityRange.value;
-	ValideCouleurHTML();
-}
-opacityRange.addEventListener("change", changeOpacity)
+opacityRange.addEventListener("change", ValideCouleurHTML)
 
 
 /* Applique la couleur sélectionnée au DOM */
@@ -45,19 +40,22 @@ function ValideCouleurHTML(){
 	HexaRouge = Rouge.toString(16).toUpperCase();
 	HexaVert = Vert.toString(16).toUpperCase();
 	HexaBleu = Bleu.toString(16).toUpperCase();
-	HexaAlpha = Math.round(opacityRange.value * 255).toString(16).toUpperCase();
+	HexaAlpha = Math.round((255 - opacityRange.value)).toString(16).toUpperCase();
 
 	
 	/* Affiche la valeur sur 2 digits */
 	if (Rouge < 16){
 	  HexaRouge = "0" + HexaRouge;
 	} /* End If HexaRouge */
-	if (HexaVert == "0"){
-	  HexaVert = "00";
+	if (HexaVert <16){
+	  HexaVert = "0"+HexaVert;
 	} /* End If HexaVert */
-	if (HexaBleu == "0"){
-	  HexaBleu = "00";
+	if (HexaBleu <16){
+	  HexaBleu = "0"+HexaBleu;
 	} /* End If HexaBleu */
+	if(HexaAlpha.length<2){
+		HexaAlpha = "0"+HexaAlpha;
+	}
 
 
 	/* Concatène la chaîne Hexa des trois couleurs */
