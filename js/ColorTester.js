@@ -30,7 +30,7 @@ var colorDisplayer = document.getElementById("color-displayer");
 	}
 })()
 
-opacityRange.addEventListener("change", ValideCouleurHTML)
+opacityRange.addEventListener("input", ValideCouleurHTML)
 
 
 /* Applique la couleur sélectionnée au DOM */
@@ -148,3 +148,5 @@ function ValideVert(Valeur){
 	Vert = Valeur;
 	ValideCouleurHTML();
 }
+
+ValideCouleurHTML();
