@@ -1,0 +1,63 @@
+/* Feuille de styles exercice Color Tester */
+/* Fabien Cazayous - 2019 */
+
+body {
+	width: 100%;
+	background-color: #000000;
+}
+
+h2, h3 {
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+	text-align: center;
+	color: black;
+	background-color: white;
+}
+
+th {
+	padding: 2px;
+}
+
+#Rouge{
+	background-color: #FF0000;
+}
+
+#Vert{
+	background-color: #00FF00;
+}
+
+#Bleu{
+	background-color: #0000FF;
+}
+
+.relColor {
+	color: #FFFFFF;
+	background-color: #333333;
+}
+
+button {
+	width: 100%;
+}      
+.wrapper {
+	display: flex;
+	justify-content: space-around;
+	width: 800px; 
+	margin: 0 auto;
+ }
+#color-displayer {
+	width: 100px;
+	height: 100px;
+	background-color: red;
+	/* flex: 1; */
+	justify-self: flex-end;
+}
+table {
+	width: 40%;
+	background-color: white;
+	margin-left: auto;
+	margin-right: auto;
+	/* flex: 1; */
+} 
+
+	  
