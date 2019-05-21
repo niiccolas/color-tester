@@ -2,7 +2,6 @@
 1) Fonction remplissage du tbody
 2) Ajouter les boutons dans les cellules (valeurs + classes) 
 3) Fonctions modifications des valeurs en RGB
-4) 
 */
 
 /* Variables Globales */
