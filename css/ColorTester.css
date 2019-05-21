@@ -48,7 +48,6 @@ button {
 #color-displayer {
 	width: 100px;
 	height: 100px;
-	background-color: red;
 	/* flex: 1; */
 	justify-self: flex-end;
 }
