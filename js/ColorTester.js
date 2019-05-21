@@ -1,5 +1,9 @@
-/* Script JS exercice Color Tester */
-/* Fabien Cazayous - 2019 */
+/*
+1) Fonction remplissage du tbody
+2) Ajouter les boutons dans les cellules (valeurs + classes) 
+3) Fonctions modifications des valeurs en RGB
+4) 
+*/
 
 /* Variables Globales */
 var Rouge = 0x00;
@@ -7,8 +11,26 @@ var Vert = 0x00;
 var Bleu = 0x00;
 var Alpha = 1;
 var opacityRange = document.getElementById("Alpha");
-var colorDisplayer = document.getElementById("color-displayer")
+var colorDisplayer = document.getElementById("color-displayer");
 
+/* Populates table with rows and cells  */
+(function () {
+	const buttonValues = ['+10', 'FF', 'CC', '99', '66', '33', '00','-10']
+	let bodyTable = document.getElementById("body-table");
+
+	for(let i = 0; i < buttonValues.length; i++) {
+		let newRow = document.createElement("tr");
+		bodyTable.appendChild(newRow);
+
+		for(let j = 0; j <= 2; j++) {
+			let newCell = document.createElement("td");
+			let newButton = document.createElement("button");
+			newCell.append(newButton);
+			newRow.append(newCell);
+			newButton.innerHTML = buttonValues[i]
+		}
+	}
+})()
 
 function changeOpacity() {
 	colorDisplayer.style.opacity = opacityRange.value;
