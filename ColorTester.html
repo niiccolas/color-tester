@@ -1,217 +1,43 @@
 <!DOCTYPE html>
 <html lang="FR" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta http-equiv="content-type" content="text/xml; charset=utf-8">
-         <meta name="viewport" content="width-device-width, initial-scale=1">
-		<title>Testeur de couleur Hexa.html</title>
-		<link rel = "stylesheet" type = "text/css" href = "css/ColorTester.css" />  
-	</head>
-<body>
-	<h2>Testeur de couleur Hexadécimal</h2>
-	<h3 id = "Output">Couleur active : #000000</h3>
-	<!-- Construction du tableau -->
-	<div class="wrapper">
-		<div id="color-displayer">
-		</div>
-	
-		<table border = "0">
-		<thead>
-	
-			<tr>
-				<th id="Rouge">Rouge</th>
-				<th id="Vert">Vert</th>
-				<th id="Bleu">Bleu</th>
-			</tr>
-		</thead>
-			<tbody>
-							
-							<tr>
-								<td>
-								<button type = "button"
-										class = "relColor"
-										onclick = "ChangeRouge(10)">
-									+10
-								</button>
-								</td>
-								<td>
-								<button type = "button"
-										class = "reelColor"
-										onclick = "ChangeVert(10)">
-									+10
-								</button>
-							 </td>
-							 <td>
-								<button type = "button"
-										class = "relColor"
-										onclick = "ChangeBleu(10)">
-									+10
-								</button>
-								</td>
-							</tr>  
-				
-							<tr>
-								<td>
-								<button type = "button"
-										onclick = "ValideRouge(0xFF)">
-											FF
-										</button>
-								</td>
-								<td>
-								<button type = "button"
-										onclick = "ValideVert(0xFF)">
-											FF
-										</button>
-								</td>
-								<td>
-								<button type = "button"
-										onclick = "ValideBleu(0xFF)">
-											FF
-										</button>
-								</td>
-							</tr>
-				
-							<tr>
-								<td>
-								<button type = "button"
-										onclick = "ValideRouge(0xCC)">
-											CC
-										</button>
-								</td>
-								<td>
-								<button type = "button"
-										onclick = "ValideVert(0xCC)">
-											CC
-										</button>
-								</td>
-								<td>
-								<button type = "button"
-										onclick = "ValideBleu(0xCC)">
-											CC
-										</button>
-								</td>
-							</tr>
-				
-							<tr>
-								<td>
-								<button type = "button"
-										onclick = "ValideRouge(0x99)">
-											99
-										</button>
-								</td>
-								<td>
-								<button type = "button"
-										onclick = "ValideVert(0x99)">
-											99
-										</button>
-								</td>
-								<td>
-								<button type = "button"
-										onclick = "ValideBleu(0x99)">
-											99
-										</button>
-								</td>
-							</tr>
-				
-							<tr>
-								<td>
-								<button type = "button"
-										onclick = "ValideRouge(0x66)">
-											66
-										</button>
-								</td>
-								<td>
-								<button type = "button"
-										onclick = "ValideVert(0x66)">
-											66
-										</button>
-								</td>
-								<td>
-								<button type = "button"
-										onclick = "ValideBleu(0x66)">
-											66
-										</button>
-								</td>
-							</tr>
-				
-							<tr>
-								<td>
-								<button type = "button"
-										onclick = "ValideRouge(0x33)">
-											33
-										</button>
-								</td>
-								<td>
-								<button type = "button"
-										onclick = "ValideVert(0x33)">
-											33
-										</button>
-								</td>
-								<td>
-								<button type = "button"
-										onclick = "ValideBleu(0x33)">
-											33
-										</button>
-								</td>
-							</tr>
-				
-							<tr>
-								<td>
-								<button type = "button"
-										onclick = "ValideRouge(0x00)">
-											00
-										</button>
-								</td>
-								<td>
-								<button type = "button"
-										onclick = "ValideVert(0x00)">
-											00
-										</button>
-								</td>
-								<td>
-								<button type = "button"
-										onclick = "ValideBleu(0x00)">
-											00
-										</button>
-								</td>
-							</tr>
-							<tr>
-								<td>
-								<button type = "button"
-										class = "relColor"
-										onclick = "ChangeRouge(-10)">
-									-10
-								</button>
-								</td>
-								<td>
-								<button type = "button"
-										class = "relColor"
-										onclick = "ChangeVert(-10)">
-									-10
-								</button>
-							 </td>
-							 <td>
-								<button type = "button"
-										class = "relColor"
-										onclick = "ChangeBleu(-10)">
-									-10
-								</button>
-								</td>
-							</tr>
-			</tbody>
-			<tfoot>
-				<tr>
-					<td colspan="3">
-						<input type="range" name="alpha" id="Alpha" value="1" min="0" max="1" step="0.1">
-					</td>
-	
-				</tr>
-			</tfoot>  
-		</table>
-	</div>
-	<form action = "">
-		
 
-	</form>
-	<script type = "text/javascript" src = "js/ColorTester.js"> </script>  
+<head>
+  <meta http-equiv="content-type" content="text/xml; charset=utf-8">
+  <meta name="viewport" content="width-device-width, initial-scale=1">
+  <title>Testeur de couleur</title>
+  <link rel="stylesheet" type="text/css" href="css/ColorTester.css" />
+</head>
+
+<body>
+  <h1>Testeur de couleur Hexadécimal</h1>
+  <h2 id="Output">Couleur active : #000000</h2>
+  <!-- Construction du tableau -->
+  <div class="wrapper">
+    <div id="color-displayer">
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th id="Rouge">Rouge</th>
+          <th id="Vert">Vert</th>
+          <th id="Bleu">Bleu</th>
+        </tr>
+      </thead>
+      <tbody id="body-table">
+
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">
+            <input type="range" name="alpha" id="Alpha" value="1" min="0" max="1" step="0.1">
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <script type="text/javascript" src="js/ColorTester.js"> </script>
 </body>
+
 </html>
