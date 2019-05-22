@@ -18,6 +18,7 @@ h1 {
   text-align: center;
   font-size: 2rem;
 }
+
 h2,
 h3 {
   margin: 0 auto;
@@ -44,7 +45,7 @@ h3 {
   justify-content: center;
   align-items: center;
   margin: 10px;
-  height: 280px;
+  height: 390px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
 }
@@ -106,19 +107,55 @@ th {
   font-weight: bold;
 }
 
-button {
-  width: 100%;
-  padding: 0 50px;
+table button {
+  width: 150px;
+  height: 30px;
   border-radius: 5px;
+  border: none;
   margin: 5px 0 0 0;
+
+  transition: all 0.2s;
+  box-sizing: border-box;
+
+  color: #ffffff;
+  text-shadow: 0 0 3px black;
+  font-size: 1rem;
 }
 
-button:hover {
+
+table button:hover {
   cursor: pointer;
+  border: 2px solid #33bbff;
+  box-shadow: 0 0 8px #005588;
+}
+
+.btn-color-modifier {
+  background-color: #3fb3ff;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: 2px solid blue;
+  height: 35px;
+  margin: 10px 0 5px;
+}
+
+.btn-color-modifier:hover
+{
+  border-color: white;
+}
+
+table button:focus:not(.btn-color-modifier) {
+  background-color: white !important;
+  color: black;
+  border: 2px solid black;
+  box-shadow: 0 0 8px black;
+  text-shadow: none;
+  font-weight: bold;
 }
 
 #transparence {
   width: 100px;
+  font-weight: bold;
 }
 
 input[type=range] {
