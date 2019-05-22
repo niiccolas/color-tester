@@ -5,16 +5,46 @@
 */
 
 /* Variables Globales */
-let Rouge = 0x00
-let Vert = 0x00
-let Bleu = 0x00
-let opacityRange = document.getElementById('Alpha')
-let colorDisplayer = document.getElementById('color-displayer');
-/* Init function */
 (function () {
   tablePopulator()
   classPopulator()
 })()
+
+let Rouge = 0x00
+let Vert = 0x00
+let Bleu = 0x00
+let opacityRange = document.getElementById('Alpha')
+let colorDisplayer = document.getElementById('color-displayer')
+const cellsOfRedCol = document.querySelectorAll('.col-red')
+const cellsOfGreenCol = document.querySelectorAll('.col-green')
+const cellsOfBlueCol = document.querySelectorAll('.col-blue')
+
+/* Init function */
+// eslint-disable-next-line space-before-function-paren
+
+cellsOfRedCol.forEach(cell => {
+  cell.addEventListener('click', function() {
+    let cellVal = cell.innerHTML
+    
+    ChangeRouge(cellVal)
+  })
+})
+
+cellsOfGreenCol.forEach(cell => {
+  cell.addEventListener('click', function() {
+    let cellVal = cell.innerHTML
+    console.log(cellVal)
+    ChangeVert(cellVal)
+  })
+})
+
+cellsOfBlueCol.forEach(cell => {
+  cell.addEventListener('click', function() {
+    let cellVal = cell.innerHTML
+    console.log(cellVal)
+    ChangeBleu(cellVal)
+  })
+})
 
 /* Populates table with rows and cells  */
 
@@ -60,10 +90,10 @@ function ValideCouleurHTML() {
   if (Rouge < 16) {
     HexaRouge = '0' + HexaRouge
   } /* End If HexaRouge */
-  if (HexaVert < 16) {
+  if (Vert < 16) {
     HexaVert = '0' + HexaVert
   } /* End If HexaVert */
-  if (HexaBleu < 16) {
+  if (Bleu < 16) {
     HexaBleu = '0' + HexaBleu
   } /* End If HexaBleu */
   if (HexaAlpha.length < 2) {
@@ -74,6 +104,8 @@ function ValideCouleurHTML() {
   /* Transmet la chaîne Hexa au Background du DOM */
   colorDisplayer.style.backgroundColor = hexaColor
 
+  console.log(hexaColor)
+
   /* Transmet la chaîne Hexa à l'élément Output du DOM */
   let Output = document.getElementById('Output')
   Output.innerHTML = 'Couleur sélectionnée : ' + hexaColor
@@ -82,7 +114,17 @@ function ValideCouleurHTML() {
 
 function ChangeRouge(Butee) {
   // Controle Incrementation - Décrémentation
-  Rouge += Butee
+  if(Butee === "+10") {
+    Butee = 10
+    Rouge += Butee
+  }else if(Butee === "-10"){
+    Butee = 10
+    Rouge -= Butee
+  }else {
+    Rouge = parseInt(Butee, 16)
+  }
+  
+
   if (Rouge > 255) {
     Rouge = 255
   } /* End Id Rouge */
@@ -94,35 +136,46 @@ function ChangeRouge(Butee) {
 
 function ChangeVert(Butee) {
   // Controle Incrementation - Décrémentation
-  Vert += Butee
+  if(Butee === "+10") {
+    Butee = 10
+    Vert += Butee
+  }else if(Butee === "-10"){
+    Butee = 10
+    Vert -= Butee
+  }else {
+    Vert = parseInt(Butee, 16)
+  }
+  
+
   if (Vert > 255) {
     Vert = 255
-  } /* End If Vert */
+  } /* End Id Rouge */
   if (Vert < 0) {
     Vert = 0
-  } /* End If Vert */
-  ValideCouleurHTML()
-} /* Fin Function */
-
-function ChangeBleu(Butee) {
-  // Controle Incrementation - Décrémentation
-  Bleu += Butee
-  if (Bleu > 255) {
-    Bleu = 255
-  } /* End If Bleu */
-  if (Bleu < 0) {
-    Bleu = 0
-  } /* End If Bleur */
-  ValideCouleurHTML()
-} /* Fin Function */
-
-function ValideRouge(Valeur) {
-  Rouge = Valeur
+  } /* End If Rouge */
   ValideCouleurHTML()
 }
 
-function ValideBleu(Valeur) {
-  Bleu = Valeur
+function ChangeBleu(Butee) {
+  // Controle Incrementation - Décrémentation
+   // Controle Incrementation - Décrémentation
+   if(Butee === "+10") {
+    Butee = 10
+    Bleu += Butee
+  }else if(Butee === "-10"){
+    Butee = 10
+    Bleu -= Butee
+  }else {
+    Bleu = parseInt(Butee, 16)
+  }
+  
+
+  if (Bleu > 255) {
+    Bleu = 255
+  } /* End Id Rouge */
+  if (Bleu < 0) {
+    Bleu = 0
+  } /* End If Rouge */
   ValideCouleurHTML()
 }
 
@@ -132,3 +185,4 @@ function ValideVert(Valeur) {
 }
 
 ValideCouleurHTML()
+
