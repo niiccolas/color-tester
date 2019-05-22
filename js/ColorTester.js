@@ -18,33 +18,30 @@ let colorDisplayer = document.getElementById('color-displayer')
 const cellsOfRedCol = document.querySelectorAll('.col-red')
 const cellsOfGreenCol = document.querySelectorAll('.col-green')
 const cellsOfBlueCol = document.querySelectorAll('.col-blue')
-
+const allCol = [cellsOfRedCol, cellsOfGreenCol, cellsOfBlueCol]
 /* Init function */
 // eslint-disable-next-line space-before-function-paren
-
-cellsOfRedCol.forEach(cell => {
-  cell.addEventListener('click', function() {
-    let cellVal = cell.innerHTML
-    
-    ChangeRouge(cellVal)
-  })
-})
-
-cellsOfGreenCol.forEach(cell => {
-  cell.addEventListener('click', function() {
-    let cellVal = cell.innerHTML
-    console.log(cellVal)
-    ChangeVert(cellVal)
-  })
-})
-
-cellsOfBlueCol.forEach(cell => {
-  cell.addEventListener('click', function() {
-    let cellVal = cell.innerHTML
-    console.log(cellVal)
-    ChangeBleu(cellVal)
-  })
-})
+//console.log(allCol)
+function colorChanger() {
+    allCol.forEach(col => {
+      col.forEach(cell => {
+        cell.addEventListener('click', function () {
+          let cellClass = cell.getAttribute('class')
+          if (cellClass === 'col-red') {
+            let cellVal = cell.innerHTML
+            ChangeRouge(cellVal)
+          } else if (cellClass === 'col-green') {
+            let cellVal = cell.innerHTML
+            ChangeVert(cellVal)
+          } else if (cellClass === 'col-blue') {
+            let cellVal = cell.innerHTML
+            ChangeBleu(cellVal)
+          }
+        })
+      })
+    })
+}
+colorChanger()
 
 /* Populates table with rows and cells  */
 
@@ -71,7 +68,7 @@ function classPopulator() {
 
   let colorClasses = ['col-red', 'col-green', 'col-blue'];
   for (let i = 0; i <= colorClasses.length; i++) {
-    document.querySelectorAll('#body-table tr td:nth-child(' + (i+1) + ') button').forEach(cell => {
+    document.querySelectorAll('#body-table tr td:nth-child(' + (i + 1) + ') button').forEach(cell => {
       cell.classList.add(colorClasses[i])
     })
   }
@@ -114,16 +111,16 @@ function ValideCouleurHTML() {
 
 function ChangeRouge(Butee) {
   // Controle Incrementation - Décrémentation
-  if(Butee === "+10") {
+  if (Butee === "+10") {
     Butee = 10
     Rouge += Butee
-  }else if(Butee === "-10"){
+  } else if (Butee === "-10") {
     Butee = 10
     Rouge -= Butee
-  }else {
+  } else {
     Rouge = parseInt(Butee, 16)
   }
-  
+
 
   if (Rouge > 255) {
     Rouge = 255
@@ -136,16 +133,16 @@ function ChangeRouge(Butee) {
 
 function ChangeVert(Butee) {
   // Controle Incrementation - Décrémentation
-  if(Butee === "+10") {
+  if (Butee === "+10") {
     Butee = 10
     Vert += Butee
-  }else if(Butee === "-10"){
+  } else if (Butee === "-10") {
     Butee = 10
     Vert -= Butee
-  }else {
+  } else {
     Vert = parseInt(Butee, 16)
   }
-  
+
 
   if (Vert > 255) {
     Vert = 255
@@ -158,17 +155,17 @@ function ChangeVert(Butee) {
 
 function ChangeBleu(Butee) {
   // Controle Incrementation - Décrémentation
-   // Controle Incrementation - Décrémentation
-   if(Butee === "+10") {
+  // Controle Incrementation - Décrémentation
+  if (Butee === "+10") {
     Butee = 10
     Bleu += Butee
-  }else if(Butee === "-10"){
+  } else if (Butee === "-10") {
     Butee = 10
     Bleu -= Butee
-  }else {
+  } else {
     Bleu = parseInt(Butee, 16)
   }
-  
+
 
   if (Bleu > 255) {
     Bleu = 255
@@ -185,4 +182,3 @@ function ValideVert(Valeur) {
 }
 
 ValideCouleurHTML()
-
