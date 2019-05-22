@@ -22,6 +22,8 @@ const allCol = [cellsOfRedCol, cellsOfGreenCol, cellsOfBlueCol]
 /* Init function */
 // eslint-disable-next-line space-before-function-paren
 //console.log(allCol)
+
+/*Handle all colors functions */
 function colorChanger() {
   allCol.forEach(col => {
     col.forEach(cell => {
@@ -42,7 +44,6 @@ function colorChanger() {
   })
 }
 /* Populates table with rows and cells  */
-
 function tablePopulator() {
   const buttonValues = ['+10', 'FF', 'CC', '99', '66', '33', '00', '-10']
   let bodyTable = document.getElementById('body-table')
@@ -59,7 +60,7 @@ function tablePopulator() {
       newButton.innerHTML = buttonValues[i]
     }
   }
-};
+}
 
 /* Adds color classes to the buttons */
 function classPopulator() {
@@ -71,8 +72,6 @@ function classPopulator() {
     })
   }
 }
-
-opacityRange.addEventListener('input', colorValidator)
 /* Applique la couleur sélectionnée au DOM */
 function colorValidator() {
   /* Récupère la chaîne Hexa des couleurs sélectionnées */
@@ -92,7 +91,7 @@ function colorValidator() {
   } /* End If hexaBlue */
   if (HexaAlpha.length < 2) {
     HexaAlpha = '0' + HexaAlpha
-  } 
+  }
   /* Concatène la chaîne Hexa des trois couleurs */
   let hexaColor = '#' + hexaRed + hexaGreen + hexaBlue + HexaAlpha
   /* Transmet la chaîne Hexa au Background du DOM */
@@ -158,7 +157,6 @@ function changeBlue(nodeValue) {
     blueColor = parseInt(nodeValue, 16)
   }
 
-
   if (blueColor > 255) {
     blueColor = 255
   } /* End Id redColor */
@@ -168,5 +166,6 @@ function changeBlue(nodeValue) {
   colorValidator()
 }
 
+opacityRange.addEventListener('input', colorValidator)
 colorChanger()
 colorValidator()
