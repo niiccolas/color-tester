@@ -10,9 +10,15 @@ let Vert = 0x00
 let Bleu = 0x00
 let opacityRange = document.getElementById('Alpha')
 let colorDisplayer = document.getElementById('color-displayer');
+/* Init function */
+(function () {
+  tablePopulator()
+  classPopulator()
+})()
 
 /* Populates table with rows and cells  */
-(function () {
+
+function tablePopulator() {
   const buttonValues = ['+10', 'FF', 'CC', '99', '66', '33', '00', '-10']
   let bodyTable = document.getElementById('body-table')
 
@@ -28,11 +34,22 @@ let colorDisplayer = document.getElementById('color-displayer');
       newButton.innerHTML = buttonValues[i]
     }
   }
-})()
+};
+
+/* Adds color classes to the buttons */
+function classPopulator() {
+
+  let colorClasses = ['col-red', 'col-green', 'col-blue'];
+  for (let i = 0; i <= colorClasses.length; i++) {
+    document.querySelectorAll('#body-table tr td:nth-child(' + (i+1) + ') button').forEach(cell => {
+      cell.classList.add(colorClasses[i])
+    })
+  }
+}
 
 opacityRange.addEventListener('input', ValideCouleurHTML)
 /* Applique la couleur sélectionnée au DOM */
-function ValideCouleurHTML () {
+function ValideCouleurHTML() {
   /* Récupère la chaîne Hexa des couleurs sélectionnées */
   let HexaRouge = Rouge.toString(16).toUpperCase()
   let HexaVert = Vert.toString(16).toUpperCase()
@@ -62,7 +79,8 @@ function ValideCouleurHTML () {
   Output.innerHTML = 'Couleur sélectionnée : ' + hexaColor
 } // end of function
 
-function ChangeRouge (Butee) {
+
+function ChangeRouge(Butee) {
   // Controle Incrementation - Décrémentation
   Rouge += Butee
   if (Rouge > 255) {
@@ -74,7 +92,7 @@ function ChangeRouge (Butee) {
   ValideCouleurHTML()
 } /* Fin Function */
 
-function ChangeVert (Butee) {
+function ChangeVert(Butee) {
   // Controle Incrementation - Décrémentation
   Vert += Butee
   if (Vert > 255) {
@@ -86,7 +104,7 @@ function ChangeVert (Butee) {
   ValideCouleurHTML()
 } /* Fin Function */
 
-function ChangeBleu (Butee) {
+function ChangeBleu(Butee) {
   // Controle Incrementation - Décrémentation
   Bleu += Butee
   if (Bleu > 255) {
@@ -98,17 +116,17 @@ function ChangeBleu (Butee) {
   ValideCouleurHTML()
 } /* Fin Function */
 
-function ValideRouge (Valeur) {
+function ValideRouge(Valeur) {
   Rouge = Valeur
   ValideCouleurHTML()
 }
 
-function ValideBleu (Valeur) {
+function ValideBleu(Valeur) {
   Bleu = Valeur
   ValideCouleurHTML()
 }
 
-function ValideVert (Valeur) {
+function ValideVert(Valeur) {
   Vert = Valeur
   ValideCouleurHTML()
 }
