@@ -10,9 +10,9 @@
   classPopulator()
 })()
 
-let Rouge = 0x00
-let Vert = 0x00
-let Bleu = 0x00
+let redColor = 0x00
+let greenColor = 0x00
+let blueColor = 0x00
 let opacityRange = document.getElementById('Alpha')
 let colorDisplayer = document.getElementById('color-displayer')
 const cellsOfRedCol = document.querySelectorAll('.col-red')
@@ -23,26 +23,24 @@ const allCol = [cellsOfRedCol, cellsOfGreenCol, cellsOfBlueCol]
 // eslint-disable-next-line space-before-function-paren
 //console.log(allCol)
 function colorChanger() {
-    allCol.forEach(col => {
-      col.forEach(cell => {
-        cell.addEventListener('click', function () {
-          let cellClass = cell.getAttribute('class')
-          if (cellClass === 'col-red') {
-            let cellVal = cell.innerHTML
-            ChangeRouge(cellVal)
-          } else if (cellClass === 'col-green') {
-            let cellVal = cell.innerHTML
-            ChangeVert(cellVal)
-          } else if (cellClass === 'col-blue') {
-            let cellVal = cell.innerHTML
-            ChangeBleu(cellVal)
-          }
-        })
+  allCol.forEach(col => {
+    col.forEach(cell => {
+      cell.addEventListener('click', function () {
+        let cellClass = cell.getAttribute('class')
+        if (cellClass === 'col-red') {
+          let cellVal = cell.innerHTML
+          changeRed(cellVal)
+        } else if (cellClass === 'col-green') {
+          let cellVal = cell.innerHTML
+          changeGreen(cellVal)
+        } else if (cellClass === 'col-blue') {
+          let cellVal = cell.innerHTML
+          changeBlue(cellVal)
+        }
       })
     })
+  })
 }
-colorChanger()
-
 /* Populates table with rows and cells  */
 
 function tablePopulator() {
@@ -74,111 +72,101 @@ function classPopulator() {
   }
 }
 
-opacityRange.addEventListener('input', ValideCouleurHTML)
+opacityRange.addEventListener('input', colorValidator)
 /* Applique la couleur sélectionnée au DOM */
-function ValideCouleurHTML() {
+function colorValidator() {
   /* Récupère la chaîne Hexa des couleurs sélectionnées */
-  let HexaRouge = Rouge.toString(16).toUpperCase()
-  let HexaVert = Vert.toString(16).toUpperCase()
-  let HexaBleu = Bleu.toString(16).toUpperCase()
+  let hexaRed = redColor.toString(16).toUpperCase()
+  let hexaGreen = greenColor.toString(16).toUpperCase()
+  let hexaBlue = blueColor.toString(16).toUpperCase()
   let HexaAlpha = Math.round((255 - opacityRange.value)).toString(16).toUpperCase()
-
   /* Affiche la valeur sur 2 digits */
-  if (Rouge < 16) {
-    HexaRouge = '0' + HexaRouge
-  } /* End If HexaRouge */
-  if (Vert < 16) {
-    HexaVert = '0' + HexaVert
-  } /* End If HexaVert */
-  if (Bleu < 16) {
-    HexaBleu = '0' + HexaBleu
-  } /* End If HexaBleu */
+  if (redColor < 16) {
+    hexaRed = '0' + hexaRed
+  } /* End If hexaRed */
+  if (greenColor < 16) {
+    hexaGreen = '0' + hexaGreen
+  } /* End If hexaGreen */
+  if (blueColor < 16) {
+    hexaBlue = '0' + hexaBlue
+  } /* End If hexaBlue */
   if (HexaAlpha.length < 2) {
     HexaAlpha = '0' + HexaAlpha
-  }
+  } 
   /* Concatène la chaîne Hexa des trois couleurs */
-  let hexaColor = '#' + HexaRouge + HexaVert + HexaBleu + HexaAlpha
+  let hexaColor = '#' + hexaRed + hexaGreen + hexaBlue + HexaAlpha
   /* Transmet la chaîne Hexa au Background du DOM */
   colorDisplayer.style.backgroundColor = hexaColor
-
-  console.log(hexaColor)
-
   /* Transmet la chaîne Hexa à l'élément Output du DOM */
   let Output = document.getElementById('Output')
   Output.innerHTML = 'Couleur sélectionnée : ' + hexaColor
 } // end of function
 
 
-function ChangeRouge(Butee) {
+function changeRed(nodeValue) {
   // Controle Incrementation - Décrémentation
-  if (Butee === "+10") {
-    Butee = 10
-    Rouge += Butee
-  } else if (Butee === "-10") {
-    Butee = 10
-    Rouge -= Butee
+  if (nodeValue === "+10") {
+    nodeValue = 10
+    redColor += nodeValue
+  } else if (nodeValue === "-10") {
+    nodeValue = 10
+    redColor -= nodeValue
   } else {
-    Rouge = parseInt(Butee, 16)
-  }
-
-
-  if (Rouge > 255) {
-    Rouge = 255
-  } /* End Id Rouge */
-  if (Rouge < 0) {
-    Rouge = 0
-  } /* End If Rouge */
-  ValideCouleurHTML()
+    redColor = parseInt(nodeValue, 16)
+  } /* End If redColor */
+  if (redColor > 255) {
+    redColor = 255
+  } /* End Id redColor */
+  if (redColor < 0) {
+    redColor = 0
+  } /* End If redColor */
+  colorValidator()
 } /* Fin Function */
 
-function ChangeVert(Butee) {
+function changeGreen(nodeValue) {
   // Controle Incrementation - Décrémentation
-  if (Butee === "+10") {
-    Butee = 10
-    Vert += Butee
-  } else if (Butee === "-10") {
-    Butee = 10
-    Vert -= Butee
+  if (nodeValue === "+10") {
+    nodeValue = 10
+    greenColor += nodeValue
+  } else if (nodeValue === "-10") {
+    nodeValue = 10
+    greenColor -= nodeValue
   } else {
-    Vert = parseInt(Butee, 16)
+    greenColor = parseInt(nodeValue, 16)
   }
 
 
-  if (Vert > 255) {
-    Vert = 255
-  } /* End Id Rouge */
-  if (Vert < 0) {
-    Vert = 0
-  } /* End If Rouge */
-  ValideCouleurHTML()
+  if (greenColor > 255) {
+    greenColor = 255
+  } /* End Id redColor */
+  if (greenColor < 0) {
+    greenColor = 0
+  } /* End If redColor */
+  colorValidator()
 }
 
-function ChangeBleu(Butee) {
+function changeBlue(nodeValue) {
   // Controle Incrementation - Décrémentation
   // Controle Incrementation - Décrémentation
-  if (Butee === "+10") {
-    Butee = 10
-    Bleu += Butee
-  } else if (Butee === "-10") {
-    Butee = 10
-    Bleu -= Butee
+  if (nodeValue === "+10") {
+    nodeValue = 10
+    blueColor += nodeValue
+  } else if (nodeValue === "-10") {
+    nodeValue = 10
+    blueColor -= nodeValue
   } else {
-    Bleu = parseInt(Butee, 16)
+    blueColor = parseInt(nodeValue, 16)
   }
 
 
-  if (Bleu > 255) {
-    Bleu = 255
-  } /* End Id Rouge */
-  if (Bleu < 0) {
-    Bleu = 0
-  } /* End If Rouge */
-  ValideCouleurHTML()
+  if (blueColor > 255) {
+    blueColor = 255
+  } /* End Id redColor */
+  if (blueColor < 0) {
+    blueColor = 0
+  } /* End If redColor */
+  colorValidator()
 }
 
-function ValideVert(Valeur) {
-  Vert = Valeur
-  ValideCouleurHTML()
-}
-
-ValideCouleurHTML()
+colorChanger()
+colorValidator()
