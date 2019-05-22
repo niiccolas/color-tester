@@ -1,62 +1,153 @@
 /* Feuille de styles exercice Color Tester */
-/* Fabien Cazayous - 2019 */
-
-body {
-	width: 100%;
-	background-color: white;
+/* Akbar, Sissako, Yannis, Stéphane, Nicolas, Néphéline */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-h2, h3 {
-	margin-left: auto;
-	margin-right: auto;
-	width: 60%;
-	text-align: center;
-	color: black;
-	background-color: white;
+body {
+  width: 100%;
+  background-color: white;
+  font-family: Avenir, sans-serif;
+}
+
+/* CONTAINER */
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+}
+h2,
+h3 {
+  margin: 0 auto;
+  width: 60%;
+  text-align: center;
+  color: black;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: space-between;
+}
+
+/* POPULATE CLASS FOR EVERY DIVISION*/
+.displayer {
+  border-radius: 5px;
+  width: 100px;
+  display: flex;
+  flex-basis: calc(50% - 40px);
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  height: 280px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+.displayer:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* DIVISION TOP LEFT - RGBA CONTENT */
+#rgba>input,
+label {
+  display: inline-block;
+}
+
+label {
+  text-align: center;
+}
+
+#rgba>div>button {
+  width: 80px;
+  height: 20px;
+  margin-left: 20%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  border: none;
+}
+
+#rgba>div>button:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* DIVISION TOP RIGHT - HEXADECIMAL TABLE - */
+table {
+  background-color: white;
+  height: 210px;
+}
+
+th,
+td {
+  padding: 0 5px
 }
 
 th {
-	padding: 2px;
+  padding: 5px 0;
 }
 
-#Rouge{
-	background-color: #FF0000;
+#rouge {
+  color: red;
+  font-weight: bold;
 }
 
-#Vert{
-	background-color: #00FF00;
+#vert {
+  color: green;
+  font-weight: bold;
 }
 
-#Bleu{
-	background-color: #0000FF;
-}
-
-.relColor {
-	color: #FFFFFF;
-	background-color: #333333;
+#bleu {
+  color: blue;
+  font-weight: bold;
 }
 
 button {
-	width: 100%;
-}      
-.wrapper {
-	display: flex;
-	justify-content: space-around;
-	width: 800px; 
-	margin: 0 auto;
- }
-#color-displayer {
-	width: 100px;
-	height: 100px;
-	/* flex: 1; */
-	justify-self: flex-end;
+  width: 100%;
+  padding: 0 50px;
+  border-radius: 5px;
+  margin: 5px 0 0 0;
 }
-table {
-	width: 40%;
-	background-color: white;
-	margin-left: auto;
-	margin-right: auto;
-	/* flex: 1; */
-} 
 
-	  
+button:hover {
+  cursor: pointer;
+}
+
+#transparence {
+  width: 100px;
+}
+
+input[type=range] {
+  width: 100%;
+}
+
+/* DIVISION BOTTOM LEFT - COLOR DISPLAYER FOR RGBA */
+#rgba-display {
+  position: relative;
+  width: 100px;
+  background-color: rgba(255, 0, 0, 0.8);
+}
+
+#rgba-display>p {
+  z-index: -2;
+  margin: 0 auto;
+  width: 60%;
+  text-align: center;
+}
+
+/* DIVISION BOTTOM RIGHT - COLOR DISPLAYER FOR HEXADECIMAL */
+#color-displayer {
+  justify-self: flex-end;
+}
+
+#Output {
+
+  text-shadow: 3px 3px 5px black;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
