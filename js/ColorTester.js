@@ -9,7 +9,7 @@
   tablePopulator()
   classPopulator()
 })()
-
+/* Global variables */
 let redColor = 0x00
 let greenColor = 0x00
 let blueColor = 0x00
