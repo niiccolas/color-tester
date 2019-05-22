@@ -140,7 +140,7 @@ input[type=range] {
 }
 
 /* DIVISION BOTTOM RIGHT - COLOR DISPLAYER FOR HEXADECIMAL */
-#color-displayer {
+#hex-display {
   justify-self: flex-end;
 }
 
