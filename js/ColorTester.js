@@ -8,7 +8,7 @@
 (function () {
   tablePopulator()
   classPopulator()
-  
+
 })()
 /* Global variables */
 let redColor = 0x00
@@ -175,18 +175,26 @@ function changeBlue(nodeValue) {
 }
 
 function rgbaChanger() {
+  function get_hex_value(input) {
+    // Check if string is empty, because parseInt don't work on empty string
+    if (!input.value) {
+      return '0'
+    } else {
+      return parseInt(input.value).toString(16).toUpperCase()
+    }
+  }
 
-  let hexaRed = (parseInt(rInput.value)).toString(16).toUpperCase()
-  let hexaGreen = (parseInt(gInput.value)).toString(16).toUpperCase()
-  let hexaBlue =  (parseInt(bInput.value)).toString(16).toUpperCase()
-  let HexaAlpha = Math.round((255 - aInput.value)).toString(16).toUpperCase()
-  if (rInput.value < 16) {
+  let hexaRed = get_hex_value(rInput)
+  let hexaGreen = get_hex_value(gInput)
+  let hexaBlue = get_hex_value(bInput)
+  let HexaAlpha = get_hex_value(aInput)
+  if (rInput.value.length < 2) {
     hexaRed = '0' + hexaRed
   } /* End If hexaRed */
-  if (gInput.value < 16) {
+  if (gInput.value.length < 2) {
     hexaGreen = '0' + hexaGreen
   } /* End If hexaGreen */
-  if (bInput.value < 16) {
+  if (bInput.value.length < 2) {
     hexaBlue = '0' + hexaBlue
   } /* End If hexaBlue */
   if (HexaAlpha.length < 2) {
@@ -205,7 +213,7 @@ bInput.addEventListener("input", rgbaChanger)
 aInput.addEventListener("input", rgbaChanger)
 console.log(reset)
 /* Reset Function */
-reset.addEventListener("click", ()=>{
+reset.addEventListener("click", () => {
   rInput.value = 0
   gInput.value = 0
   bInput.value = 0
