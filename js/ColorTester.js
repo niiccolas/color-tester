@@ -36,14 +36,14 @@ function colorChanger() {
   allCol.forEach(col => {
     col.forEach(cell => {
       cell.addEventListener('click', function () {
-        let cellClass = cell.getAttribute('class')
-        if (cellClass === 'col-red') {
+        let cellClassList = cell.classList
+        if (cellClassList.contains('col-red')) {
           let cellVal = cell.innerHTML
           changeRed(cellVal)
-        } else if (cellClass === 'col-green') {
+        } else if (cellClassList.contains('col-green')) {
           let cellVal = cell.innerHTML
           changeGreen(cellVal)
-        } else if (cellClass === 'col-blue') {
+        } else if (cellClassList.contains('col-blue')) {
           let cellVal = cell.innerHTML
           changeBlue(cellVal)
         }
@@ -63,9 +63,33 @@ function tablePopulator() {
     for (let j = 0; j <= 2; j++) {
       let newCell = document.createElement('td')
       let newButton = document.createElement('button')
+      const hexValue = buttonValues[i]
+
       newCell.append(newButton)
       newRow.append(newCell)
-      newButton.innerHTML = buttonValues[i]
+
+      newButton.innerHTML = hexValue
+      if (i > 0 && i < buttonValues.length - 1) {
+        let backgroundColor
+        switch (j) {
+          case 0:
+            backgroundColor = `#${hexValue}0000`
+            break
+          case 1:
+            backgroundColor = `#00${hexValue}00`
+            break
+          case 2:
+            backgroundColor = `#0000${hexValue}`
+            break
+          default:
+            break
+        }
+        newButton.style.backgroundColor = backgroundColor
+      }
+      else
+      {
+        newButton.classList.add('btn-color-modifier')
+      }
     }
   }
 }
