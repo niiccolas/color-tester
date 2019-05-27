@@ -8,6 +8,7 @@
 (function () {
   tablePopulator()
   classPopulator()
+  
 })()
 /* Global variables */
 let redColor = 0x00
@@ -15,10 +16,17 @@ let greenColor = 0x00
 let blueColor = 0x00
 let opacityRange = document.getElementById('Alpha')
 let colorDisplayer = document.getElementById('hex-display')
+let rgbaDisplayer = document.getElementById('rgba-display')
 const cellsOfRedCol = document.querySelectorAll('.col-red')
 const cellsOfGreenCol = document.querySelectorAll('.col-green')
 const cellsOfBlueCol = document.querySelectorAll('.col-blue')
 const allCol = [cellsOfRedCol, cellsOfGreenCol, cellsOfBlueCol]
+let rInput = document.getElementById("r-input")
+let gInput = document.getElementById("g-input")
+let bInput = document.getElementById("b-input")
+let aInput = document.getElementById("a-input")
+let reset = document.getElementById("reset")
+
 /* Init function */
 // eslint-disable-next-line space-before-function-paren
 //console.log(allCol)
@@ -166,6 +174,45 @@ function changeBlue(nodeValue) {
   colorValidator()
 }
 
+function rgbaChanger() {
+
+  let hexaRed = (parseInt(rInput.value)).toString(16).toUpperCase()
+  let hexaGreen = (parseInt(gInput.value)).toString(16).toUpperCase()
+  let hexaBlue =  (parseInt(bInput.value)).toString(16).toUpperCase()
+  let HexaAlpha = Math.round((255 - aInput.value)).toString(16).toUpperCase()
+  if (rInput.value < 16) {
+    hexaRed = '0' + hexaRed
+  } /* End If hexaRed */
+  if (gInput.value < 16) {
+    hexaGreen = '0' + hexaGreen
+  } /* End If hexaGreen */
+  if (bInput.value < 16) {
+    hexaBlue = '0' + hexaBlue
+  } /* End If hexaBlue */
+  if (HexaAlpha.length < 2) {
+    HexaAlpha = '0' + HexaAlpha
+  }
+  console.log(hexaRed)
+  let hexaColor = '#' + hexaRed + hexaGreen + hexaBlue + HexaAlpha
+  /* Transmet la chaîne Hexa au Background du DOM */
+  console.log(hexaColor)
+  rgbaDisplayer.style.backgroundColor = hexaColor
+}
+// Events //
+rInput.addEventListener("input", rgbaChanger)
+gInput.addEventListener("input", rgbaChanger)
+bInput.addEventListener("input", rgbaChanger)
+aInput.addEventListener("input", rgbaChanger)
+console.log(reset)
+/* Reset Function */
+reset.addEventListener("click", ()=>{
+  rInput.value = 0
+  gInput.value = 0
+  bInput.value = 0
+  aInput.value = 0
+  rgbaChanger()
+})
 opacityRange.addEventListener('input', colorValidator)
 colorChanger()
 colorValidator()
+rgbaChanger()
